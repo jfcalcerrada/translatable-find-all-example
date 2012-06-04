@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class TipoClienteRepository extends EntityRepository
 {
+    public function findAll(){
+        $query= $this->getEntityManager() ->createQuery('SELECT a FROM KoramaPruebaBundle:TipoCliente a ORDER BY a.nombre ASC');
+
+        $query->setHint(
+            \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        $query->setHint(
+            \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
+            'en'
+        );
+
+        // fallback
+        $query->setHint(
+            \Gedmo\Translatable\TranslatableListener::HINT_FALLBACK,
+            1 // fallback to default values in case if record is not translated
+        );
+
+        return $query->getResult(); 
+    }
 }
