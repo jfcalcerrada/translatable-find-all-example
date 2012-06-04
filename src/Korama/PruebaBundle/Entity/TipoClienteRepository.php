@@ -20,9 +20,11 @@ class TipoClienteRepository extends EntityRepository
             'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
 
+        $locale_actual = $GLOBALS['kernel']->getContainer()->get('session')->getLocale();
         $query->setHint(
             \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
-            'en'
+            $locale_actual 
+
         );
 
         // fallback
