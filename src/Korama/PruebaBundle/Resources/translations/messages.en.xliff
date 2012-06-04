@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file datatype="plaintext" original="file.ext" target-language="en" source-language="ia">
+        <body>
+            <trans-unit id="1">
+                <source>title</source>
+                <target>Testing</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Nombre</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Tipocliente</source>
+                <target>Customer Type</target>
+            </trans-unit>            
+ 
+
+        </body>
+    </file>
+</xliff>

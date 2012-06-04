@@ -1,0 +1,7 @@
+parameters:
+#    korama_prueba.example.class: Korama\PruebaBundle\Example
+
+services:
+#    korama_prueba.example:
+#        class: %korama_prueba.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

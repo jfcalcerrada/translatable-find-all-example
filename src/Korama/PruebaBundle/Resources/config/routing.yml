@@ -1,0 +1,22 @@
+tipoCliente_new:
+    pattern:  /{_locale}/tipocliente/new
+    defaults: { _controller: KoramaPruebaBundle:TipoCliente:new, _locale: es }
+    requirements:
+        _locale: es|en
+        
+tipoCliente_saved:
+    pattern:  /{_locale}/tipocliente/saved
+    defaults: { _controller: KoramaPruebaBundle:TipoCliente:saved, _locale: es }
+    requirements:
+        _locale: es|en
+cliente_new:
+    pattern:  /{_locale}/cliente/new
+    defaults: { _controller: KoramaPruebaBundle:Cliente:new, _locale: es }
+    requirements:
+        _locale: es|en
+cliente_saved:
+    pattern:  /{_locale}/cliente/saved
+    defaults: { _controller: KoramaPruebaBundle:Cliente:saved, _locale: es }
+    requirements:
+        _locale: es|en
+    
