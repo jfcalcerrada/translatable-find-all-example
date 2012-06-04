@@ -3,7 +3,7 @@
 namespace Korama\PruebaBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-
+use Gedmo\Translatable\TranslatableListener;
 /**
  * TipoClienteRepository
  *
@@ -20,9 +20,10 @@ class TipoClienteRepository extends EntityRepository
             'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
 
+        $listener=$this->getTranslatableListener();
         $query->setHint(
             \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
-            'en'
+            $listener->getListenerLocale() 
         );
 
         // fallback
@@ -32,5 +33,34 @@ class TipoClienteRepository extends EntityRepository
         );
 
         return $query->getResult(); 
+    }
+    
+    private $listener=null;
+    /**
+     * Get the currently used TranslatableListener
+     *
+     * @throws \Gedmo\Exception\RuntimeException - if listener is not found
+     * @return TranslatableListener
+     */
+    private function getTranslatableListener()
+    {
+        if (!$this->listener) {
+            foreach ($this->_em->getEventManager()->getListeners() as $event => $listeners) {
+                foreach ($listeners as $hash => $listener) {
+                    if ($listener instanceof TranslatableListener) {
+                        $this->listener = $listener;
+                        break;
+                    }
+                }
+                if ($this->listener) {
+                    break;
+                }
+            }
+
+            if (is_null($this->listener)) {
+                throw new \Gedmo\Exception\RuntimeException('The translation listener could not be found');
+            }
+        }
+        return $this->listener;
     }
 }
