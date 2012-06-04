@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            
             new Korama\PruebaBundle\KoramaPruebaBundle(),
         );
 

@@ -5,6 +5,9 @@ namespace Korama\PruebaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
+
 /**
  * Description of TipoCliente
  *
@@ -12,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Korama\PruebaBundle\Entity\TipoClienteRepository")
  */
-class TipoCliente {
+class TipoCliente  implements Translatable  {
 
     /**
      * @var integer $id
@@ -25,6 +28,7 @@ class TipoCliente {
 
     /**
      * @var string $nombre
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="validators.not_blank")
      * @Assert\MaxLength(limit = 255, message="validators.max_length")
@@ -92,5 +96,17 @@ class TipoCliente {
     public function getClientes()
     {
         return $this->clientes;
+    }
+    
+    /**
+     * @Gedmo\Locale
+     * Used locale to override Translation listener`s locale
+     * this is not a mapped field of entity metadata, just a simple property
+     */
+    private $locale;
+    
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

@@ -30,17 +30,24 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
         $this->manager = $manager;
 
 
+        $repository = $manager->getRepository('Gedmo\\Translatable\\Entity\\Translation');
         
         // -- Cargar datos de TIPO_CLIENTES-------------------------------------
-        $tipos_str=array(
+        $tipos_str_es=array(
                     "Mayorista",
                     "Minorista",
                     "Comercial"
             );
-       
-        foreach ($tipos_str as $tipo_str){
+        $tipos_str_en=array(
+                    "Mayorist",
+                    "Minorist",
+                    "Negotiator"
+            );
+        $i=0;
+        foreach ($tipos_str_es as $tipo_str){
             $tipoCliente= new TipoCliente();
             $tipoCliente->setNombre($tipo_str);
+            $repository->translate($tipoCliente, 'nombre', 'en', $tipos_str_en[$i++]);
             $manager->persist($tipoCliente);
         }
         
