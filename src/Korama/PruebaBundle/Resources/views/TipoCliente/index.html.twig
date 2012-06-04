@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+        <ul id="navigation">
+           {% for tipoCliente in listatipoCliente %}
+                <li>
+                    <a href="{{ path('tipocliente_view', {'id': tipoCliente.id } ) }}">
+                        {{ tipoCliente.nombre }}
+
+                    </a>
+                </li>
+           {% endfor %}
+        </ul>
+
+{% endblock %}

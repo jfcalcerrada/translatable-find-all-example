@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+{% for locale, translation in translations %}
+    {% for campo, valor in translation %}
+         '{{campo}}'=>'{{valor}}' <br/>
+    {% else %}
+        No hay campos en translation '{{locale}}'
+    {% endfor %}
+{% else %}
+    No hay translations ;-(
+{% endfor %}
+
+
+
+{% endblock %}

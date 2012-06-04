@@ -19,4 +19,13 @@ cliente_saved:
     defaults: { _controller: KoramaPruebaBundle:Cliente:saved, _locale: es }
     requirements:
         _locale: es|en
-    
+
+tipocliente_view:
+    pattern:  /tipocliente/view/{id}
+    defaults: { _controller: KoramaPruebaBundle:TipoCliente:view, id: 0 }
+    requirements:
+        id: \d*
+        
+tipocliente_index:        
+    pattern:  /tipocliente/index
+    defaults: { _controller: KoramaPruebaBundle:TipoCliente:index }
