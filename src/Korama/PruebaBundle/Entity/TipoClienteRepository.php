@@ -22,7 +22,7 @@ class TipoClienteRepository extends EntityRepository
 
         $query->setHint(
             \Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE,
-            'en'
+            $GLOBALS['kernel']->getContainer()->get('session')->getLocale()
         );
 
         // fallback

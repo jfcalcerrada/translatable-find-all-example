@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-<form action="{{ path('tipoCliente_new') }}" method="post" {{ form_enctype(form) }}>
+
+<form action="{{ path('tipocliente_edit', { 'id': form.vars.value.id }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
     <input type="submit" />

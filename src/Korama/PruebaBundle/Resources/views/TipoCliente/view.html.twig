@@ -1,12 +1,15 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-
+Nombre: {{tipoCliente.nombre}}<br/>
+<h2>Translations</h2>
 {% for locale, translation in translations %}
+   [{{locale}}] => {
     {% for campo, valor in translation %}
-         '{{campo}}'=>'{{valor}}' <br/>
+         <br/>'{{campo}}'=>'{{valor}}', <br/>
     {% else %}
         No hay campos en translation '{{locale}}'
     {% endfor %}
+    }    
 {% else %}
     No hay translations ;-(
 {% endfor %}

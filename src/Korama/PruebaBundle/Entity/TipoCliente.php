@@ -14,7 +14,7 @@ use Gedmo\Translatable\Translatable;
  * @author toyos
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Korama\PruebaBundle\Entity\TipoClienteRepository")
- * @Gedmo\TranslationEntity(class="Korama\PruebaBundle\Entity\TipoClienteTranslation")
+ * Gedmo\TranslationEntity(class="Korama\PruebaBundle\Entity\TipoClienteTranslation")
  */
 class TipoCliente  implements Translatable  {
 

@@ -30,7 +30,7 @@ class ClienteController extends Controller
             }
         }
 
-        return $this->render('KoramaPruebaBundle:Cliente:new.html.twig', array(
+        return $this->render('KoramaPruebaBundle:Cliente:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }

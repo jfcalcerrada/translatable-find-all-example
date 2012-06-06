@@ -3,12 +3,13 @@
         <ul id="navigation">
            {% for tipoCliente in listatipoCliente %}
                 <li>
-                    <a href="{{ path('tipocliente_view', {'id': tipoCliente.id } ) }}">
+                    
                         {{ tipoCliente.nombre }}
-
-                    </a>
+                        <a href="{{ path('tipocliente_view', {'id': tipoCliente.id } ) }}">Ver</a>
+                        <a href="{{ path('tipocliente_edit', {'id': tipoCliente.id } ) }}">Editar</a>
+                        
                 </li>
            {% endfor %}
         </ul>
-
+<a href="{{ path('tipocliente_edit' ) }}">Nuevo</a>
 {% endblock %}

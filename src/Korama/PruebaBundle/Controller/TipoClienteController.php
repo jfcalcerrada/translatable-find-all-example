@@ -22,12 +22,14 @@ class TipoClienteController extends Controller
                 )
                 );
     }
-    public function newAction(Request $request)
+    public function editAction($id=null)
     {
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->getRequest();
         // create a task and give it some dummy data for this example
-        $tipoCliente = new TipoCliente();
-        $tipoCliente->setNombre('Nuevo Nombre');
+        $tipoCliente=$this->cargaEntity($id);
+
+        //$tipoCliente->setNombre('Nuevo Nombre');
 
         $form = $this->createForm(new TipoClienteType(), $tipoCliente);
         if ($request->getMethod() == 'POST') {
@@ -37,16 +39,30 @@ class TipoClienteController extends Controller
             // perform some action, such as saving the task to the database
                 $em->persist($tipoCliente);
                 $em->flush();
-                return $this->redirect($this->generateUrl('tipoCliente_saved'));
+                return $this->redirect($this->generateUrl('tipocliente_view',
+                                            array(
+                                                "id" => $tipoCliente->getId()
+                                      )));
             }
         }
 
-        return $this->render('KoramaPruebaBundle:TipoCliente:new.html.twig', array(
+        return $this->render('KoramaPruebaBundle:TipoCliente:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }
-    public function savedAction(){
-        return new Response('<html><body><h1>SAVED</h1></body></html>');
+    private function cargaEntity( $id ){
+
+        if (! $id){
+            return new TipoCliente();
+        }
+        $entity = $this->getDoctrine()->getEntityManager()
+                       ->find('KoramaPruebaBundle:TipoCliente',$id);
+        
+        if (!$entity) {
+            throw $this->createNotFoundException("No existe esa entidad");
+        }
+
+        return $entity;
     }
     public function viewAction($id =0){
         $em = $this->getDoctrine()->getEntityManager();
@@ -62,10 +78,11 @@ class TipoClienteController extends Controller
         $repository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
         $translations = $repository->findTranslations($tipoCliente);
         return $this->render('KoramaPruebaBundle:TipoCliente:view.html.twig', array(
+            'tipoCliente' => $tipoCliente,
             'translations' => $translations
         ));
        
         
     }
-    
+
 }
