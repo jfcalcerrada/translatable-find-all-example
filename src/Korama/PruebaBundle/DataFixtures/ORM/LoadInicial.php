@@ -8,8 +8,10 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-use Korama\PruebaBundle\Entity\Cliente,
- Korama\PruebaBundle\Entity\TipoCliente;
+use 
+ Korama\PruebaBundle\Entity\Cliente,
+ Korama\PruebaBundle\Entity\TipoCliente,
+ Korama\PruebaBundle\Entity\TipoClienteTranslation;
 
 
 /**
@@ -47,7 +49,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
         foreach ($tipos_str_es as $tipo_str){
             $tipoCliente= new TipoCliente();
             $tipoCliente->setNombre($tipo_str);
-            $repository->translate($tipoCliente, 'nombre', 'en', $tipos_str_en[$i++]);
+            $tipoCliente->addTranslation(new TipoClienteTranslation('en', 'nombre', $tipos_str_en[$i++]));
             $manager->persist($tipoCliente);
         }
         

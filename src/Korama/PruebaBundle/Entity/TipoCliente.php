@@ -5,6 +5,7 @@ namespace Korama\PruebaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
@@ -14,9 +15,9 @@ use Gedmo\Translatable\Translatable;
  * @author toyos
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Korama\PruebaBundle\Entity\TipoClienteRepository")
- * Gedmo\TranslationEntity(class="Korama\PruebaBundle\Entity\TipoClienteTranslation")
+ * @Gedmo\TranslationEntity(class="Korama\PruebaBundle\Entity\TipoClienteTranslation")
  */
-class TipoCliente  implements Translatable  {
+class TipoCliente  {
 
     /**
      * @var integer $id
@@ -35,7 +36,16 @@ class TipoCliente  implements Translatable  {
      * @Assert\MaxLength(limit = 255, message="validators.max_length")
      */
     protected $nombre;
-
+    
+ /**
+     * @ORM\OneToMany(
+     *   targetEntity="TipoClienteTranslation",
+     *   mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */ 
+    private $translations; 
+    
     /**
      * @ORM\OneToMany(targetEntity="Cliente", mappedBy="tipoCliente")
      */
@@ -73,12 +83,7 @@ class TipoCliente  implements Translatable  {
     }
 
 
-
-    public function __construct()
-    {
-        $this->clientes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+  
     /**
      * Add clientes
      *
@@ -109,5 +114,33 @@ class TipoCliente  implements Translatable  {
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+    
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->clientes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    /**
+     * Add translations
+     *
+     * @param Korama\PruebaBundle\Entity\TipoClienteTranslation $translation
+     */
+    public function addTranslation(\Korama\PruebaBundle\Entity\TipoClienteTranslation $translation)
+    {
+        if (!$this->translations->contains($translation)) {
+            $this->translations[] = $translation;
+            $translation->setObject($this);
+        }
+     }
+
+    /**
+     * Get translations
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }
