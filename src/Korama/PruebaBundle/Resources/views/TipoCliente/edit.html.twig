@@ -1,9 +1,18 @@
-{% extends '::base.html.twig' %}
-{% block body %}
+{% extends 'KoramaPruebaBundle::template_tipocliente.html.twig' %}
+{% block content %}
 
 <form action="{{ path('tipocliente_edit', { 'id': form.vars.value.id }) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-
-    <input type="submit" />
+    {{ form_errors(form) }}
+    {{ form_row(form.nombre) }}
+    <h3>{{'translations'|trans}}</h3>
+    <ul class="translations">
+        {% for translation in form.translations %}
+            <li>{{ form_row(translation.locale) }}</li>
+            <li>{{ form_row(translation.field) }}</li>
+            <li>{{ form_row(translation.content) }}</li>
+        {% endfor %}
+    </ul>    
+   {{ form_rest(form) }}    
+    <input type="submit" value="{{'send.data'|trans}}"/>
 </form>
 {% endblock %}

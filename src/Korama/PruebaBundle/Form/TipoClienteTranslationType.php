@@ -10,24 +10,24 @@ use Symfony\Component\Form\FormBuilder;
  *
  * @author toyos
  */
-class TipoClienteType extends AbstractType {
+class TipoClienteTranslationType extends AbstractType {
 
     public function buildForm(FormBuilder $builder, array $options) {
         $builder
-                ->add("nombre" )
-                ->add('translations', 'collection', 
-                        array('type' => new TipoClienteTranslationType()));                
+                ->add("locale" )
+                ->add("field" )
+                ->add("content" )
         ;
     }
 
     public function getName() {
-        return 'tipocliente';
+        return 'tipoclientetranslation';
     }
 
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Korama\PruebaBundle\Entity\TipoCliente',
+            'data_class' => 'Korama\PruebaBundle\Entity\TipoClienteTranslation',
         );
     }
 }

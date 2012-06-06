@@ -1,19 +1,21 @@
-{% extends '::base.html.twig' %}
-{% block body %}
+{% extends 'KoramaPruebaBundle::template_tipocliente.html.twig' %}
+{% block content %}
 Nombre: {{tipoCliente.nombre}}<br/>
-<h2>Translations</h2>
-{% for locale, translation in translations %}
-   [{{locale}}] => {
-    {% for campo, valor in translation %}
-         <br/>'{{campo}}'=>'{{valor}}', <br/>
-    {% else %}
-        No hay campos en translation '{{locale}}'
-    {% endfor %}
-    }    
+<h3>{{'translations'|trans}}</h3>
+<ul>
+{% for translation in tipoCliente.translations %}
+    <li>
+        <ul>
+            <li>locale:{{ translation.locale }}</li>
+            <li>field:{{ translation.field }}</li>
+            <li>content:{{ translation.content }}</li>
+        
+        </ul>
+    </li>
 {% else %}
-    No hay translations ;-(
+    <li>No hay translations ;-(</li>
 {% endfor %}
-
+</ul>
 
 
 {% endblock %}

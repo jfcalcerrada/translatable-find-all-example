@@ -1,8 +1,9 @@
-{% extends '::base.html.twig' %}
-{% block body %}
+{% extends 'KoramaPruebaBundle::template_cliente.html.twig' %}
+{% block content %}
 <form action="{{ path('cliente_edit') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="submit" />
+    <input type="submit" value="{{'send.data'|trans}}"/>
 </form>
 {% endblock %}
+

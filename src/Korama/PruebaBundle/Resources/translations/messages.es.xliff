@@ -4,8 +4,54 @@
         <body>
             <trans-unit id="1">
                 <source>title</source>
-                <target>Probando</target>
+                <target>Aplicación de Prueba de Traducciones</target>
             </trans-unit>
+            <trans-unit id="2">
+                <source>name</source>
+                <target>Nombre</target>
+            </trans-unit>
+   
+            <trans-unit id="3">
+                <source>new</source>
+                <target>Nuevo</target>
+            </trans-unit>   
+            <trans-unit id="4">
+                <source>view</source>
+                <target>Ver</target>
+            </trans-unit>    
+            <trans-unit id="5">
+                <source>edit</source>
+                <target>Editar</target>
+            </trans-unit>              
+            <trans-unit id="6">
+                <source>customer</source>
+                <target>Cliente</target>
+            </trans-unit>   
+            <trans-unit id="7">
+                <source>customer-type</source>
+                <target>Tipo de Cliente</target>
+            </trans-unit>              
+            <trans-unit id="8">
+                <source>translations</source>
+                <target>Traducciones</target>
+            </trans-unit>   
+            <trans-unit id="9">
+                <source>Nombre</source>
+                <target>Nombre</target>
+            </trans-unit>               
+            <trans-unit id="10">
+                <source>Tipocliente</source>
+                <target>Tipo de Cliente</target>
+            </trans-unit>               
+            <trans-unit id="11">
+                <source>send.data</source>
+                <target>Enviar Datos</target>
+            </trans-unit>               
+            <trans-unit id="12">
+                <source>back</source>
+                <target>Volver</target>
+            </trans-unit>               
+            
         </body>
     </file>
 </xliff>

@@ -75,11 +75,10 @@ class TipoClienteController extends Controller
         if (!$tipoCliente) {
             throw $this->createNotFoundException('No product found for id '.$id);
         } 
-        $repository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
-        $translations = $repository->findTranslations($tipoCliente);
+        //$repository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
+        //$translations = $repository->findTranslations($tipoCliente);
         return $this->render('KoramaPruebaBundle:TipoCliente:view.html.twig', array(
-            'tipoCliente' => $tipoCliente,
-            'translations' => $translations
+            'tipoCliente' => $tipoCliente
         ));
        
         

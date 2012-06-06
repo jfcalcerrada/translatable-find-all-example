@@ -1,15 +1,18 @@
-{% extends '::base.html.twig' %}
-{% block body %}
+{% extends 'KoramaPruebaBundle::template_tipocliente.html.twig' %}
+{% block content %}
         <ul id="navigation">
            {% for tipoCliente in listatipoCliente %}
                 <li>
                     
                         {{ tipoCliente.nombre }}
-                        <a href="{{ path('tipocliente_view', {'id': tipoCliente.id } ) }}">Ver</a>
-                        <a href="{{ path('tipocliente_edit', {'id': tipoCliente.id } ) }}">Editar</a>
+                        <a href="{{ path('tipocliente_view', {'id': tipoCliente.id } ) }}">{{'view'|trans}}</a>
+                        <a href="{{ path('tipocliente_edit', {'id': tipoCliente.id } ) }}">{{'edit'|trans}}</a>
                         
                 </li>
            {% endfor %}
         </ul>
-<a href="{{ path('tipocliente_edit' ) }}">Nuevo</a>
+
+<a href="{{ path('tipocliente_edit' ) }}">{{'new'|trans}}</a> <br/>
+<a href="{{ path('menu') }}">{{'back'|trans}}</a>
+
 {% endblock %}
