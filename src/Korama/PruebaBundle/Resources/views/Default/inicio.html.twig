@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<ul>
+    <li><a href="{{ path('menu', { '_locale': 'es' }) }}">es</li>
+    <li><a href="{{ path('menu', { '_locale': 'en' }) }}">en</li>
+</ul>
+{% endblock %}

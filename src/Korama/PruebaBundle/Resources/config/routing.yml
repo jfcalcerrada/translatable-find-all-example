@@ -10,12 +10,14 @@ cliente_edit:
     requirements:
         id: \d*
         _locale: es|en
-tipocliente_view:
+        
+cliente_view:
     pattern:  /{_locale}/cliente/view/{id}
     defaults: { _controller: KoramaPruebaBundle:Cliente:view, id: 0, _locale: es }
     requirements:
         id: \d*
-        _locale: es|en
+        _locale: es|en        
+
 
 tipocliente_view:
     pattern:  /{_locale}/tipocliente/view/{id}
@@ -35,4 +37,13 @@ tipocliente_edit:
     requirements:
         id: \d*
         _locale: es|en
-        
+
+inicio:
+  pattern:  /
+  defaults: { _controller: KoramaPruebaBundle:Default:inicio }  
+
+menu:    
+  pattern:  /{_locale}
+  defaults: { _controller: KoramaPruebaBundle:Default:menu}  
+  requirements:
+        _locale: es|en  
