@@ -121,18 +121,7 @@ class TipoCliente  {
         $this->translations = new ArrayCollection();
         $this->clientes = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    /**
-     * Add translations
-     *
-     * @param Korama\PruebaBundle\Entity\TipoClienteTranslation $translation
-     */
-    public function addTranslation(\Korama\PruebaBundle\Entity\TipoClienteTranslation $translation)
-    {
-        if (!$this->translations->contains($translation)) {
-            $this->translations[] = $translation;
-            $translation->setObject($this);
-        }
-     }
+
 
     /**
      * Get translations
@@ -143,4 +132,20 @@ class TipoCliente  {
     {
         return $this->translations;
     }
+
+
+
+    /**
+     * Add translations
+     *
+     * @param Korama\PruebaBundle\Entity\TipoClienteTranslation $translations
+     */
+    public function addTipoClienteTranslation(\Korama\PruebaBundle\Entity\TipoClienteTranslation $translations)
+    {
+         if (!$this->translations->contains($translations)) {
+            $this->translations[] = $translations;
+            $translations->setObject($this);
+        }
+    }
+    
 }

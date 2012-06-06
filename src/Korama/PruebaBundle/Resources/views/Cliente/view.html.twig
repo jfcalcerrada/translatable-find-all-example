@@ -1,7 +1,8 @@
 {% extends 'KoramaPruebaBundle::template_cliente.html.twig' %}
 {% block content %}
 {{'name'|trans}}: {{cliente.nombre}}<br/>
+{{'Tipocliente'|trans}}: {{cliente.tipoCliente.nombre}}<br/>
 
-
+<a href="{{ path('cliente_index') }}">{{'back'|trans}}</a>
 
 {% endblock %}

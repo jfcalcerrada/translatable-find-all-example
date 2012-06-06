@@ -14,5 +14,7 @@
     </ul>    
    {{ form_rest(form) }}    
     <input type="submit" value="{{'send.data'|trans}}"/>
+    
 </form>
+<a href="{{ path('tipocliente_index') }}">{{'back'|trans}}</a>
 {% endblock %}

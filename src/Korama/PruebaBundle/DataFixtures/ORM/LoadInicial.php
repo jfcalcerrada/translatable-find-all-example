@@ -49,7 +49,7 @@ class LoadInicial extends AbstractFixture implements OrderedFixtureInterface, Co
         foreach ($tipos_str_es as $tipo_str){
             $tipoCliente= new TipoCliente();
             $tipoCliente->setNombre($tipo_str);
-            $tipoCliente->addTranslation(new TipoClienteTranslation('en', 'nombre', $tipos_str_en[$i++]));
+            $tipoCliente->addTipoClienteTranslation(new TipoClienteTranslation('en', 'nombre', $tipos_str_en[$i++]));
             $manager->persist($tipoCliente);
         }
         

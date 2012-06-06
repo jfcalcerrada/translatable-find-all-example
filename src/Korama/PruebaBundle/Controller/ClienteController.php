@@ -71,16 +71,15 @@ class ClienteController extends Controller
         $cliente = $this->getDoctrine()
         ->getRepository('KoramaPruebaBundle:Cliente')
         ->find($id);
-        
+        $cliente->getTipoCliente()->setTranslatableLocale($this->get('session')->getLocale());
+        $em->refresh($cliente->getTipoCliente());
         
         if (!$cliente) {
             throw $this->createNotFoundException('No product found for id '.$id);
         } 
-        $repository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
-        $translations = $repository->findTranslations($cliente);
+
         return $this->render('KoramaPruebaBundle:Cliente:view.html.twig', array(
-            'cliente' => $cliente,
-            'translations' => $translations
+            'cliente' => $cliente
         ));
        
         
